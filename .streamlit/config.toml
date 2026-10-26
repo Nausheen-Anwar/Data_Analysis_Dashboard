@@ -1,0 +1,12 @@
+[theme]
+base = "light"
+# Keep these four values the same as BG / ACCENT / INK in utils/palette.py
+
+primaryColor = "#315F68"
+backgroundColor = "#C9DCE5"
+secondaryBackgroundColor = "#A9BDB7"
+textColor = "#20353C"
+font = "sans serif"
+
+[server]
+maxUploadSize = 500
