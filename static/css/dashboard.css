@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root {
+  --font-body:    'DM Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-heading: 'Manrope', 'Segoe UI', Roboto, Arial, sans-serif;
+  --edge: color-mix(in srgb, var(--ust-ink) 22%, transparent);
+  --card-shadow: 0 8px 22px rgba(32, 53, 60, .10);
+  --kpi-deep: #416D76;
+  --kpi-light: #628B91;
+}
+
+/* ---------- base: the whole background ---------- */
+.stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+  background: var(--ust-bg) !important;
+  color: var(--ust-ink);
+  font-family: var(--font-body);
+}
+html, body, button, input, textarea, select { font-family: var(--font-body); }
+[class*="st-"]:not([data-testid="stIconMaterial"]):not([class*="material-icons"]):not([class*="material-symbols"]) { font-family: var(--font-body); }
+[data-testid="stIconMaterial"],
+span[class*="material-icons"],
+span[class*="material-symbols"] {
+  font-family: "Material Symbols Rounded", "Material Symbols Outlined", "Material Icons" !important;
+  font-feature-settings: "liga" !important;
+}
+h1, h2, h3, h4, h5, h6, .ust-title { font-family: var(--font-heading) !important; color: var(--ust-ink); }
+p, label, span, li, .stMarkdown, [data-testid="stCaptionContainer"] { color: var(--ust-ink); }
+
+header[data-testid="stHeader"] {
+  background: var(--ust-bg) !important;
+  border-bottom: 1px solid var(--edge);
+}
+
+/* ---------- sidebar: page colour---------- */
+section[data-testid="stSidebar"] {
+  background: var(--ust-bg) !important;
+  border-right: 1px solid var(--edge);
+}
+section[data-testid="stSidebar"] details {
+  background: var(--ust-accent);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+}
+section[data-testid="stSidebar"] details * { color: var(--ust-on-accent); }
+section[data-testid="stSidebar"] summary { font-weight: 600; }
+section[data-testid="stSidebar"] [data-testid="stFileUploaderDropzone"] {
+  background: var(--ust-bg);
+  border: 1.5px dashed var(--ust-ink);
+  border-radius: 12px;
+}
+
+/* ---------- headings ---------- */
+h1 { font-weight: 700; letter-spacing: -.6px; }
+h2 { font-weight: 650; letter-spacing: -.25px; }
+h3 { font-weight: 600; letter-spacing: -.15px; }
+h3::before {                       /* small marker in front of every section title */
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 1.05em;
+  margin-right: 11px;
+  vertical-align: -3px;
+  border-radius: 5px;
+  background: var(--ust-ink);
+}
+
+/* ---------- section cards ---------- */
+div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > div[data-testid="stVerticalBlock"] h3) {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--ust-accent) 88%, white), var(--ust-accent)) !important;
+  border: 1px solid color-mix(in srgb, var(--ust-ink) 20%, transparent) !important;
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+  padding: 2px;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > div[data-testid="stVerticalBlock"] h3) * {
+  color: var(--ust-ink);
+}
+div[data-testid="stVerticalBlockBorderWrapper"]:has(> div > div[data-testid="stVerticalBlock"] h3):hover {
+  box-shadow: 0 12px 28px rgba(32, 53, 60, .14);
+  transform: translateY(-1px);
+}
+
+/* ---------- metrics ---------- */
+div[data-testid="stMetric"] {
+  background: color-mix(in srgb, var(--ust-bg) 75%, white);
+  border: 1px solid var(--edge);
+  border-radius: 13px;
+  padding: 13px 16px;
+  box-shadow: 0 3px 10px rgba(32, 53, 60, .06);
+}
+div[data-testid="stMetric"] * { color: var(--ust-ink) !important; }
+div[data-testid="stMetric"] [data-testid="stMetricValue"] { font-family: var(--font-heading); font-weight: 700; }
+
+/* the four KPI tiles at the top sit on the page, so they are colour 2 */
+.st-key-kpi_row div[data-testid="stMetric"] {
+  background: linear-gradient(135deg, var(--kpi-light), var(--kpi-deep));
+  border: 1px solid rgba(28, 53, 60, .38);
+  border-radius: 16px;
+  padding: 20px 22px;
+  min-height: 118px;
+  box-shadow: 0 7px 18px rgba(32, 53, 60, .16);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.st-key-kpi_row div[data-testid="stMetric"] * { color: #FFFFFF !important; }
+.st-key-kpi_row div[data-testid="stMetric"] label { opacity: .94; }
+.st-key-kpi_row div[data-testid="stMetric"]:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(32, 53, 60, .22); }
+
+/* ---------- buttons ---------- */
+.stButton > button, .stDownloadButton > button, .stFormSubmitButton > button {
+  background: linear-gradient(135deg, #FFFFFF, var(--ust-bg));
+  color: var(--ust-ink);
+  border: 1px solid color-mix(in srgb, var(--ust-ink) 42%, transparent);
+  border-radius: 11px;
+  font-weight: 600;
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.stButton > button[kind="primary"],
+.stFormSubmitButton > button[kind="primary"],
+button[data-testid="stBaseButton-primary"],
+button[data-testid="stBaseButton-primaryFormSubmit"] {
+  background: linear-gradient(135deg, var(--kpi-light), var(--kpi-deep));
+  color: #FFFFFF;
+  border: 1px solid var(--kpi-deep);
+  box-shadow: 0 4px 12px rgba(32, 53, 60, .12);
+}
+.stButton > button:hover, .stDownloadButton > button:hover, .stFormSubmitButton > button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ust-ink) 25%, transparent);
+  color: var(--ust-ink);
+  border-color: var(--ust-ink);
+}
+
+/* ---------- tabs ---------- */
+button[data-baseweb="tab"] {
+  font-weight: 600;
+  border-radius: 9px 9px 0 0;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+div[data-baseweb="tab-list"] { gap: 6px; flex-wrap: wrap; border-bottom: 1px solid var(--edge); }
+button[data-baseweb="tab"][aria-selected="true"] { background: var(--ust-accent); color: var(--ust-ink); box-shadow: inset 0 -3px 0 var(--kpi-deep); }
+
+/* ---------- inputs, tables, expanders, code ---------- */
+div[data-baseweb="select"] > div, div[data-baseweb="input"] > div,
+.stTextInput input, .stNumberInput input, .stTextArea textarea {
+  border-radius: 10px !important;
+  border-color: var(--ust-ink) !important;
+  background: var(--ust-bg) !important;
+  color: var(--ust-ink) !important;
+}
+div[data-testid="stDataFrame"], div[data-testid="stTable"] {
+  background: var(--ust-bg);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  overflow: hidden;
+}
+div[data-testid="stExpander"] details,
+div[data-testid="stExpander"] {
+  background: var(--ust-bg);
+  border-color: var(--edge);
+  border-radius: 12px;
+}
+div[data-testid="stExpander"] * { color: var(--ust-ink); }
+div[data-testid="stCode"], div[data-testid="stCode"] pre, .stCodeBlock, .stCodeBlock pre, pre, code {
+  background: var(--ust-bg) !important;
+  color: var(--ust-ink) !important;
+}
+div[data-baseweb="popover"] ul, div[data-baseweb="menu"], ul[role="listbox"] {
+  background: var(--ust-bg) !important;
+}
+div[data-baseweb="popover"] li, ul[role="listbox"] li { color: var(--ust-ink) !important; }
+div[data-testid="stDialog"] div[role="dialog"] {
+  background: var(--ust-bg) !important;
+  border: 1px solid var(--edge);
+  border-radius: 16px;
+}
+div[data-testid="stAlert"] { border-radius: 12px; background: var(--ust-bg); border: 1px solid var(--edge); }
+div[data-testid="stAlert"] * { color: var(--ust-ink) !important; }
+[data-testid="stFileUploaderFile"] { background: var(--ust-bg); border-radius: 10px; padding: 4px 8px; }
+div[data-baseweb="checkbox"] input:checked + div,
+div[data-baseweb="checkbox"] [aria-checked="true"] { background-color: var(--ust-ink) !important; border-color: var(--ust-ink) !important; }
+hr { border-color: var(--edge); }
+
+/* ---------- company heading ---------- */
+.ust-title {
+  text-align: center;
+  margin: 0;
+  padding: 6px 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: var(--ust-ink);
+}
+
+/* ---------- banners and callouts ---------- */
+.lab-banner {
+  background: linear-gradient(135deg, var(--ust-accent), color-mix(in srgb, var(--ust-accent) 75%, var(--ust-bg)));
+  color: var(--ust-ink);
+  border: 1px solid var(--edge);
+  border-radius: 17px;
+  padding: 20px 24px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 12px;
+}
+.lab-banner h2 { margin: 0; color: var(--ust-ink); font-size: 1.3rem; }
+.lab-banner p  { margin: 4px 0 0; color: var(--ust-ink); font-size: .95rem; }
+.concept, .formula-card {
+  background: var(--ust-bg);
+  border-left: 4px solid var(--ust-ink);
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin: 8px 0 14px;
+  color: var(--ust-ink) !important;
+}
+.concept *, .formula-card * { color: var(--ust-ink) !important; }
+
+/* ---------- responsive layout (desktop, tablet, mobile) ---------- */
+.block-container, [data-testid="stMainBlockContainer"] {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5rem 1.5rem 3rem;
+}
+img, canvas, svg { max-width: 100%; }
+div[data-testid="stDataFrame"], div[data-testid="stTable"], pre { max-width: 100%; }
+div[data-baseweb="tab-list"] { overflow-x: auto; }
+
+@media (max-width: 1024px) {
+  .block-container, [data-testid="stMainBlockContainer"] { padding: 4.5rem 1rem 2.5rem; }
+  [data-testid="stHorizontalBlock"] { flex-wrap: wrap; }
+  .st-key-kpi_row [data-testid="stColumn"],
+  .st-key-kpi_row [data-testid="column"] {
+    flex: 1 1 calc(50% - 1rem) !important;
+    min-width: calc(50% - 1rem) !important;
+  }
+}
+@media (max-width: 768px) {
+  .ust-title { font-size: 1.55rem; }
+  .lab-banner { padding: 16px 18px; }
+}
+@media (max-width: 640px) {
+  .block-container, [data-testid="stMainBlockContainer"] { padding: 4rem .7rem 2rem; }
+  .ust-title { font-size: 1.3rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+  .lab-banner { padding: 14px 14px; }
+  .lab-banner h2 { font-size: 1.1rem; }
+  .st-key-kpi_row div[data-testid="stMetric"] { padding: 12px 14px; min-height: 92px; }
+  .st-key-kpi_row div[data-testid="stMetric"] [data-testid="stMetricValue"] { font-size: 1.5rem; }
+  [data-testid="stImage"] { display: flex; justify-content: center; }
+  button[data-baseweb="tab"] { padding-left: 10px; padding-right: 10px; font-size: .9rem; }
+}
+
+span[data-baseweb="tag"] {
+  background-color: #DCEBEF !important;
+  border: 1px solid #A9C7CE !important;
+  color: #20353C !important;
+}
+span[data-baseweb="tag"] span,
+span[data-baseweb="tag"] svg,
+span[data-baseweb="tag"] [role="presentation"] {
+  color: #20353C !important;
+  fill: #20353C !important;
+}
